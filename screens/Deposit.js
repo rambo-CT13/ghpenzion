@@ -9,7 +9,7 @@ import {
   Button,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { styles } from "./Styles";
+import { styles } from "../components/Styles";
 import { PayWithFlutterwave } from "flutterwave-react-native";
 import uuid from "react-native-uuid";
 import RoundShape from "../components/RoundShape";
@@ -43,7 +43,7 @@ export default function Deposit({ navigation }) {
         time: new Date(),
         amount,
         user: uid,
-        type: "Top Up",
+        type: "Wallet Top Up",
         method: "Mobile Money",
       })
       .then(() => setModalVisible(true))
@@ -153,6 +153,26 @@ export default function Deposit({ navigation }) {
           />
         </View>
       </Modal>
+      <TouchableOpacity
+        style={{ position: "absolute", top: 65 }}
+        onPress={() => navigation.goBack()}
+      >
+        <Icon
+          type="MaterialCommunityIcons "
+          name="arrow-left"
+          style={{
+            color: "#fff",
+            backgroundColor: "#dd4400",
+            padding: 8,
+            borderRadius: 100,
+            fontSize: 24,
+            borderColor: "#fff",
+            borderWidth: 1,
+            left: 15,
+            paddingHorizontal: 10,
+          }}
+        />
+      </TouchableOpacity>
     </View>
   );
 }

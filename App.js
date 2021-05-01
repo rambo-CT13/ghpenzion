@@ -6,7 +6,11 @@ import Loading from "./components/Loading";
 import { styles } from "./components/Styles";
 import AuthStack from "./routes/AuthStack";
 import MainTab from "./routes/MainTab";
-import { AuthContext, ProfileContext } from "./services/ContextProvider";
+import {
+  AuthContext,
+  ProfileContext,
+  TransactionContext,
+} from "./services/ContextProvider";
 import { auth, db } from "./services/Firebase";
 enableScreens();
 
@@ -15,6 +19,7 @@ export default function App() {
   const [initializing, setInitializing] = useState(true);
   const [loaded, setloaded] = useState(false);
   const [profile, setProfile] = useState({});
+  const [transactions, setTransactions] = useState({});
 
   // Handle user state changes
   const onAuthStateChanged = (user) => {
@@ -25,6 +30,23 @@ export default function App() {
   useEffect(() => {
     const subscriber = auth.onAuthStateChanged(onAuthStateChanged);
     return subscriber; // unsubscribe on unmount
+  }, []);
+
+  useEffect(() => {
+    db.collection("Transactions")
+      .orderBy("time", "desc")
+      .onSnapshot(function (querySnapshot) {
+        const posts = [];
+        querySnapshot.forEach(function (doc) {
+          const post = doc.data();
+          post.id = doc.id;
+          posts.push(post);
+        });
+        setTransactions(posts);
+      });
+    (error) => {
+      alert(error);
+    };
   }, []);
 
   useEffect(() => {
@@ -43,7 +65,9 @@ export default function App() {
         <AuthContext.Provider value={user}>
           {loaded ? (
             <View style={[styles.container]}>
-              <MainTab />
+              <TransactionContext.Provider value={transactions}>
+                <MainTab />
+              </TransactionContext.Provider>
               <StatusBar style="light" />
             </View>
           ) : (

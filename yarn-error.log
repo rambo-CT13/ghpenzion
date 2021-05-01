@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add react-native-modal
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js install --force
 
 PATH: 
   C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\nodejs\;C:\Users\Chyf\AppData\Local\python2\scripts;C:\Users\Chyf\AppData\Local\python2;C:\Users\Chyf\AppData\Local\Microsoft\WindowsApps;;C:\Users\Chyf\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Chyf\AppData\Local\Yarn\bin;C:\Users\Chyf\AppData\Roaming\npm;C:\Program Files\heroku\bin
@@ -47,6 +47,7 @@ npm manifest:
       "react-native-date-picker": "^3.2.10",
       "react-native-gesture-handler": "~1.8.0",
       "react-native-keyboard-aware-scroll-view": "^0.9.3",
+      "react-native-modal": "^11.10.0",
       "react-native-paystack-webview": "^3.2.1",
       "react-native-rave-webview": "^1.0.0",
       "react-native-reanimated": "~1.13.0",
@@ -6029,6 +6030,13 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
     integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
   
+  react-native-animatable@1.3.3:
+    version "1.3.3"
+    resolved "https://registry.yarnpkg.com/react-native-animatable/-/react-native-animatable-1.3.3.tgz#a13a4af8258e3bb14d0a9d839917e9bb9274ec8a"
+    integrity sha512-2ckIxZQAsvWn25Ho+DK3d1mXIgj7tITkrS4pYDvx96WyOttSvzzFeQnM2od0+FUMzILbdHDsDEqZvnz1DYNQ1w==
+    dependencies:
+      prop-types "^15.7.2"
+  
   react-native-date-picker@^3.2.10:
     version "3.2.10"
     resolved "https://registry.yarnpkg.com/react-native-date-picker/-/react-native-date-picker-3.2.10.tgz#5e690db8e628255d8390e33b1e6f8fa9477f6fb9"
@@ -6056,6 +6064,14 @@ Lockfile:
     dependencies:
       prop-types "^15.6.2"
       react-native-iphone-x-helper "^1.0.3"
+  
+  react-native-modal@^11.10.0:
+    version "11.10.0"
+    resolved "https://registry.yarnpkg.com/react-native-modal/-/react-native-modal-11.10.0.tgz#94a6d3a2428ba5228cfb4dc174cacea79c871591"
+    integrity sha512-syRYDJYSh16bR37R5EKU9T/wC+5bEOfF17IUqf5URdhbEDd+hxyMInC++l45E8oI+MtdOaEp9yAws5xDqk8dnA==
+    dependencies:
+      prop-types "^15.6.2"
+      react-native-animatable "1.3.3"
   
   react-native-paystack-webview@^3.2.1:
     version "3.2.1"

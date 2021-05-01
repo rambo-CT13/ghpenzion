@@ -1,8 +1,8 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import Wallet from "../screens/Wallet";
-import Deposit from "../components/Deposit";
-import Withdraw from "../components/Withdraw";
+import Deposit from "../screens/Deposit";
+import Withdraw from "../screens/Withdraw";
 const Stack = createStackNavigator();
 
 export default function WalletStack({ navigation }) {

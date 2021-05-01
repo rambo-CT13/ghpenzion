@@ -87,7 +87,7 @@ export default function AppForm({ route, navigation }) {
             status: "",
             ssnitNumber: "",
             refNumber: "",
-            wallet: "",
+            wallet: 0,
           };
           usersRef
             .doc(uid)
