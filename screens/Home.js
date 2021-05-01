@@ -53,7 +53,7 @@ export default function Home() {
                 style={styles.walletIcon}
               />
               <Text style={{ fontSize: 12, color: "#333" }}>My Wallet</Text>
-              <Text style={styles.walletAmount}>GHc 120</Text>
+              <Text style={styles.walletAmount}>GHc {profile?.wallet}</Text>
             </View>
           </View>
         </View>

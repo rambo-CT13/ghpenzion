@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add react-native-date-picker
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add react-native-modal
 
 PATH: 
   C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\nodejs\;C:\Users\Chyf\AppData\Local\python2\scripts;C:\Users\Chyf\AppData\Local\python2;C:\Users\Chyf\AppData\Local\Microsoft\WindowsApps;;C:\Users\Chyf\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Chyf\AppData\Local\Yarn\bin;C:\Users\Chyf\AppData\Roaming\npm;C:\Program Files\heroku\bin
@@ -14,8 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: read ECONNRESET
-      at TLSWrap.onStreamRead (internal/stream_base_commons.js:208:20)
+  Error: EPERM: operation not permitted, unlink 'C:\DevProjects\Penzion-master\node_modules\@babel\generator\node_modules\.bin'
 
 npm manifest: 
   {
@@ -29,6 +28,7 @@ npm manifest:
     },
     "dependencies": {
       "@gorhom/bottom-sheet": "2",
+      "@react-native-community/datetimepicker": "3.0.4",
       "@react-native-community/masked-view": "0.1.10",
       "@react-native-community/viewpager": "4.2.0",
       "@react-native-picker/picker": "1.9.2",
@@ -44,13 +44,18 @@ npm manifest:
       "react": "16.13.1",
       "react-dom": "16.13.1",
       "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
+      "react-native-date-picker": "^3.2.10",
       "react-native-gesture-handler": "~1.8.0",
+      "react-native-keyboard-aware-scroll-view": "^0.9.3",
+      "react-native-paystack-webview": "^3.2.1",
+      "react-native-rave-webview": "^1.0.0",
       "react-native-reanimated": "~1.13.0",
       "react-native-safe-area-context": "3.1.9",
       "react-native-screens": "~2.15.2",
       "react-native-uuid": "^2.0.1",
       "react-native-vector-icons": "^8.1.0",
-      "react-native-web": "^0.15.0"
+      "react-native-web": "^0.15.0",
+      "react-native-webview": "^11.4.2"
     },
     "devDependencies": {
       "@babel/core": "~7.9.0"
@@ -2128,6 +2133,13 @@ Lockfile:
       strip-ansi "^5.2.0"
       sudo-prompt "^9.0.0"
       wcwidth "^1.0.1"
+  
+  "@react-native-community/datetimepicker@3.0.4":
+    version "3.0.4"
+    resolved "https://registry.yarnpkg.com/@react-native-community/datetimepicker/-/datetimepicker-3.0.4.tgz#ad3efa90fab78fc3c0710abf3cb06d2976603140"
+    integrity sha512-IsBkemz1XYubH5twfQPC/xleZdILA5SEUaLJ2C86IbnIOctb6suk8tB6uT9VxQkCsw4zjkrlqt9p9LGx9DJ97w==
+    dependencies:
+      invariant "^2.2.4"
   
   "@react-native-community/masked-view@0.1.10":
     version "0.1.10"
@@ -6017,6 +6029,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
     integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
   
+  react-native-date-picker@^3.2.10:
+    version "3.2.10"
+    resolved "https://registry.yarnpkg.com/react-native-date-picker/-/react-native-date-picker-3.2.10.tgz#5e690db8e628255d8390e33b1e6f8fa9477f6fb9"
+    integrity sha512-/fA+htnZcr3rBw3eaOR/DvMwGLDTg59MCiiluin5YcHBxNZQYs/uYp/l6Hf719qZXndPGcixS46YIgso4Jf4gg==
+  
   react-native-gesture-handler@~1.8.0:
     version "1.8.0"
     resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.8.0.tgz#18f61f51da50320f938957b0ee79bc58f47449dc"
@@ -6027,10 +6044,28 @@ Lockfile:
       invariant "^2.2.4"
       prop-types "^15.7.2"
   
-  react-native-iphone-x-helper@^1.3.0:
+  react-native-iphone-x-helper@^1.0.3, react-native-iphone-x-helper@^1.3.0:
     version "1.3.1"
     resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz#20c603e9a0e765fd6f97396638bdeb0e5a60b010"
     integrity sha512-HOf0jzRnq2/aFUcdCJ9w9JGzN3gdEg0zFE4FyYlp4jtidqU03D5X7ZegGKfT1EWteR0gPBGp9ye5T5FvSWi9Yg==
+  
+  react-native-keyboard-aware-scroll-view@^0.9.3:
+    version "0.9.3"
+    resolved "https://registry.yarnpkg.com/react-native-keyboard-aware-scroll-view/-/react-native-keyboard-aware-scroll-view-0.9.3.tgz#65ab4cab1a987b486d97924602756fa88b7fbfcc"
+    integrity sha512-EDyFp8wAJoKvi1T2pzoPRn8R0Inp3G+575jPAWEFTlXq26URMmk8760rzde2XLW+v/1+QwDyBg6d/5mz63/ZRA==
+    dependencies:
+      prop-types "^15.6.2"
+      react-native-iphone-x-helper "^1.0.3"
+  
+  react-native-paystack-webview@^3.2.1:
+    version "3.2.1"
+    resolved "https://registry.yarnpkg.com/react-native-paystack-webview/-/react-native-paystack-webview-3.2.1.tgz#4c5024a924a20bf37b6385dd02f3ad49e7206e48"
+    integrity sha512-AjiP6erq47CyxScEJ9WojEnDBDSHYTfb9jCZMvXHCXExfOFTpH/rygpjtuOOzMbm9tMutYBO8jxHumnqe87bkQ==
+  
+  react-native-rave-webview@^1.0.0:
+    version "1.0.0"
+    resolved "https://registry.yarnpkg.com/react-native-rave-webview/-/react-native-rave-webview-1.0.0.tgz#0ee486de4213ce52d015be994c78d18b68c1e66a"
+    integrity sha512-yY/jLtHkQ85vCnujNZEem0WdQv9UUs3lms2zJSeVDyVj0Yd+A5YlavMkqg9LAaIa6jNrBBTGJUGMWpbC24ihzQ==
   
   react-native-reanimated@~1.13.0:
     version "1.13.2"
@@ -6092,7 +6127,7 @@ Lockfile:
       prop-types "^15.6.0"
       react-timer-mixin "^0.13.4"
   
-  react-native-webview@>=6.0.2:
+  react-native-webview@>=6.0.2, react-native-webview@^11.4.2:
     version "11.4.2"
     resolved "https://registry.yarnpkg.com/react-native-webview/-/react-native-webview-11.4.2.tgz#5fe8867135e7395b16c08e8d26bc8064b5c0dfac"
     integrity sha512-reGWtlFCQCgZEROy0IJaI5iMhrhFzedNIFlj0d6eo0K6T91eeKaoDr24ebBvqmeemOCj0ZYtzX19qiInRznhLA==

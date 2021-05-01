@@ -28,6 +28,7 @@
     "react-native-date-picker": "^3.2.10",
     "react-native-gesture-handler": "~1.8.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.3",
+    "react-native-modal": "^11.10.0",
     "react-native-paystack-webview": "^3.2.1",
     "react-native-rave-webview": "^1.0.0",
     "react-native-reanimated": "~1.13.0",

@@ -1,21 +1,39 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
 
 import { styles } from "./Styles";
 import { Picker } from "@react-native-picker/picker";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { db } from "../services/Firebase";
 
-export default function Withdraw() {
+export default function Withdraw({ uid }) {
   const [network, setNetwork] = useState("");
+  const [amount, setAmount] = useState("");
+  const [number, setNumber] = useState("");
+  const [signing, setSigning] = useState(false);
+
+  const onWithdraw = () => {
+    setSigning(true);
+    db.collection("Withdrawals")
+      .doc()
+      .set({
+        network,
+        amount,
+        number,
+        time: new Date(),
+        id: uid,
+      })
+      .then((res) => {
+        Alert.alert("Success");
+      })
+      .catch((err) => {
+        Alert.alert(err.message);
+      });
+  };
+
   return (
     <View style={styles.contentContainer}>
-      <ScrollView style={styles.sectionP}>
+      <KeyboardAwareScrollView style={styles.sectionP}>
         <Text style={styles.modalHead}>Withdraw</Text>
         <Text style={styles.modalLabel}>Amount</Text>
         <TextInput
@@ -23,9 +41,11 @@ export default function Withdraw() {
           placeholder="10"
           placeholderTextColor="#666"
           keyboardType="numeric"
+          onChangeText={(text) => setAmount(text)}
+          value={amount}
         />
         <Text style={styles.formLabel}>Select Network</Text>
-        <View style={styles.pickerInput}>
+        <View style={styles.pickerInput2}>
           <Picker
             style={{ color: "#777" }}
             selectedValue={network}
@@ -40,14 +60,24 @@ export default function Withdraw() {
         <Text style={styles.modalLabel}>Phone Number</Text>
         <TextInput
           style={styles.modalInput}
-          placeholder="0248879654"
+          placeholder="Phone Number"
           placeholderTextColor="#aaa"
           keyboardType="numeric"
+          onChangeText={(text) => setNumber(text)}
+          value={number}
         />
-        <TouchableOpacity>
-          <Text style={styles.modalBtn}>Withdraw</Text>
-        </TouchableOpacity>
-      </ScrollView>
+        {signing ? (
+          <ActivityIndicator
+            color="#dd4400"
+            size="large"
+            style={{ marginTop: 30 }}
+          />
+        ) : (
+          <TouchableOpacity onPress={() => onWithdraw}>
+            <Text style={styles.modalBtn}>Withdraw</Text>
+          </TouchableOpacity>
+        )}
+      </KeyboardAwareScrollView>
     </View>
   );
 }

@@ -5,7 +5,6 @@ import {
   TouchableOpacity,
   StatusBar,
   ScrollView,
-  Button,
 } from "react-native";
 import { styles } from "../components/Styles";
 import { useIsFocused } from "@react-navigation/native";
@@ -15,7 +14,6 @@ import {
 } from "@gorhom/bottom-sheet";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import Withdraw from "../components/Withdraw";
-import Deposit from "../components/Deposit";
 import { ProfileContext } from "../services/ContextProvider";
 
 export default function Wallet({ navigation }) {
@@ -27,15 +25,12 @@ export default function Wallet({ navigation }) {
   }
   // ref
   const withdrawModalRef = useRef(null);
-  const depositModalRef = useRef(null);
 
   // variables
-  const snapPoints = useMemo(() => ["25%", "50%", "90%"], []);
+  const snapPoints = useMemo(() => ["50%", "75%", "90%"], []);
 
   // callbacks
-  const topUpPress = useCallback(() => {
-    depositModalRef.current?.present();
-  }, []);
+
   const withdrawPress = useCallback(() => {
     withdrawModalRef.current?.present();
   }, []);
@@ -58,16 +53,16 @@ export default function Wallet({ navigation }) {
               <View style={styles.balCon}>
                 <Text style={styles.balText}>Your Balance</Text>
                 <View style={styles.flexRow}>
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate("Deposit")}
-                  >
+                  <TouchableOpacity onPress={withdrawPress}>
                     <Icon
                       type="MaterialCommunityIcons "
                       name="minus"
                       style={styles.gradIcon}
                     />
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={topUpPress}>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate("Deposit")}
+                  >
                     <Icon
                       type="MaterialCommunityIcons "
                       name="plus"
@@ -78,7 +73,7 @@ export default function Wallet({ navigation }) {
               </View>
               <View style={styles.flexRow}>
                 <Text style={styles.totalWallet}>
-                  {profile?.wallet ? profile.wallet : "0.00"}
+                  {profile?.wallet ? profile?.wallet + ".00" : "0.00"}
                 </Text>
                 <Text style={styles.ghc}>GHC</Text>
               </View>
@@ -144,15 +139,7 @@ export default function Wallet({ navigation }) {
           snapPoints={snapPoints}
           style={{ backgroundColor: "#dd4400", borderRadius: 50 }}
         >
-          <Withdraw />
-        </BottomSheetModal>
-        {/* Deposit Modal */}
-        <BottomSheetModal
-          ref={depositModalRef}
-          index={1}
-          snapPoints={snapPoints}
-        >
-          <Deposit />
+          <Withdraw uid={profile?.id} />
         </BottomSheetModal>
       </View>
     </BottomSheetModalProvider>

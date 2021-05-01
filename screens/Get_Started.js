@@ -1,4 +1,3 @@
-import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 import { ImageBackground, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";

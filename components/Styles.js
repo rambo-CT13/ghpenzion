@@ -151,6 +151,17 @@ export const styles = StyleSheet.create({
     //color: "#dd4400",
     borderWidth: 0.5,
   },
+  pickerInput2: {
+    backgroundColor: "#fff",
+    paddingHorizontal: 10,
+    borderRadius: 5,
+    paddingVertical: 2,
+    marginBottom: 10,
+    fontSize: 16,
+    //color: "#dd4400",
+    borderWidth: 0.8,
+    borderColor: "#dd4400",
+  },
   input: {
     backgroundColor: "#fff",
     paddingHorizontal: 20,
@@ -754,8 +765,23 @@ export const styles = StyleSheet.create({
     alignContent: "center",
   },
   loadPic: {
-    width: 240,
-    height: 240,
+    width: windowHeight * 0.17,
+    height: windowHeight * 0.17,
     alignSelf: "center",
+    marginTop: -70,
+  },
+  modalSuccess: {
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    alignContent: "center",
+    width: "100%",
+    paddingHorizontal: 20,
+    paddingVertical: 30,
+    alignItems: "center",
+  },
+  modalIcon: { fontSize: 180, alignSelf: "center", marginBottom: 10 },
+  modalText: {
+    marginBottom: 40,
+    fontSize: 16,
   },
 });

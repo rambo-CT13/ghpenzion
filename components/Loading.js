@@ -7,11 +7,11 @@ const Loading = () => {
     <View style={styles.loadCon}>
       <Image
         style={styles.loadPic}
-        source={require("../assets/icon.png")}
+        source={require("../assets/penzion.png")}
         resizeMode="cover"
       ></Image>
       <ActivityIndicator
-        color="#dd4400"
+        color="#dd440090"
         size="large"
         style={{ marginTop: 15 }}
       />

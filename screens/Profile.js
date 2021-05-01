@@ -17,6 +17,7 @@ export default function Profile() {
   const [signing, setSigning] = useState(false);
   const profile = useContext(ProfileContext);
   const logOut = () => {
+    setSigning(true);
     auth
       .signOut()
       .then()
@@ -36,24 +37,24 @@ export default function Profile() {
           <Image
             style={styles.avatar}
             source={{
-              uri: profile.passPhoto,
+              uri: profile?.passPhoto,
             }}
             resizeMode="cover"
           ></Image>
         </View>
         <View style={[styles.penCon]}>
-          <Text style={styles.penSub}>Name</Text>
+          <Text style={styles.penSub}>Full Name</Text>
           <Text style={styles.penHead}>
-            {profile.lastName +
+            {profile?.lastName +
               " " +
-              profile.firstName +
+              profile?.firstName +
               " " +
-              profile.otherName}
+              profile?.otherName}
           </Text>
           <Text style={styles.penSub}>Date of Birth</Text>
-          <Text style={styles.penHead}>{profile.dob}</Text>
+          <Text style={styles.penHead}>{profile?.dob}</Text>
           <Text style={styles.penSub}>Telephone No.</Text>
-          <Text style={styles.penHead}>{profile.phone}</Text>
+          <Text style={styles.penHead}>{profile?.phone}</Text>
           <Text style={styles.penSub}>Pension Organisation</Text>
           <View style={styles.penOrg}>
             <Image
@@ -66,13 +67,15 @@ export default function Profile() {
             ></Image>
             <Text style={styles.penHead}>SNNIT</Text>
           </View>
+          <Text style={styles.penSub}>ID Type</Text>
+          <Text style={[styles.penHead]}>{profile?.idType}</Text>
           <Text style={styles.penSub}>ID No.</Text>
           <Text style={[styles.penHead, { color: "indigo" }]}>
-            {profile.idNumber}
+            {profile?.idNumber}
           </Text>
           <Text style={styles.penSub}>Contribution</Text>
           <Text style={[styles.penHead, { color: "red" }]}>
-            GHc {profile.contribution}
+            GHc {profile?.contribution} per Month
           </Text>
           <Text style={styles.penSub}>Status</Text>
           <Text style={[styles.penHead, { color: "#dd4400" }]}>

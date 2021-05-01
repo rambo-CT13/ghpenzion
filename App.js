@@ -13,28 +13,13 @@ enableScreens();
 export default function App() {
   const [user, setUser] = useState({});
   const [initializing, setInitializing] = useState(true);
-  const usersRef = db.collection("users");
-  const [loaded, setloaded] = useState(true);
-
+  const [loaded, setloaded] = useState(false);
   const [profile, setProfile] = useState({});
-  const unique = user && user.uid;
-
-  function asyncCall() {
-    const result = usersRef.onSnapshot((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const id = doc.data().id;
-        if (id === unique) {
-          setProfile(doc.data());
-          setloaded(true);
-        }
-      });
-    });
-  }
 
   // Handle user state changes
   const onAuthStateChanged = (user) => {
     if (initializing) setInitializing(false);
-    setUser(user, [asyncCall()]);
+    setUser(user);
   };
 
   useEffect(() => {
@@ -42,8 +27,16 @@ export default function App() {
     return subscriber; // unsubscribe on unmount
   }, []);
 
-  console.log(profile);
-  if (initializing) return null;
+  useEffect(() => {
+    db.collection("users")
+      .doc(user?.uid)
+      .onSnapshot((doc) => {
+        setProfile(doc.data());
+        setloaded(true);
+      });
+  }, [user]);
+
+  if (initializing) return <Loading />;
   if (user) {
     return (
       <ProfileContext.Provider value={profile}>
