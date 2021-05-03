@@ -116,45 +116,10 @@ export default function Pension() {
                 <Text>By Date</Text>
               </View>
             )}
-            <View style={styles.recentCard}>
-              <Icon
-                type="MaterialCommunityIcons "
-                name="arrow-top-left-bold-outline"
-                style={styles.redTopUpIcon}
-              />
-              <View style={styles.recentTitle}>
-                <Text style={styles.recentTitleText}>
-                  Contribution For Feb 2021
-                </Text>
-                <Text style={{ fontSize: 12 }}>Momo Payment</Text>
-              </View>
-              <View style={styles.recentAmount}>
-                <Text style={styles.recentTitleText2}>+Ghc 50.00</Text>
-                <Text style={{ fontSize: 12, alignSelf: "flex-end" }}>
-                  10/3/21
-                </Text>
-              </View>
-            </View>
-            <View style={styles.recentCard}>
-              <Icon
-                type="MaterialCommunityIcons "
-                name="arrow-top-left-bold-outline"
-                style={styles.redTopUpIcon}
-              />
-              <View style={styles.recentTitle}>
-                <Text style={styles.recentTitleText}>
-                  Contribution for Jan 2021
-                </Text>
-                <Text style={{ fontSize: 12 }}>Momo Payment</Text>
-              </View>
-              <View style={styles.recentAmount}>
-                <Text style={styles.recentTitleText2}>+Ghc 50.00</Text>
-                <Text style={{ fontSize: 12, alignSelf: "flex-end" }}>
-                  10/2/21
-                </Text>
-              </View>
-            </View>
           </View>
+          <Text style={{ alignSelf: "center", marginVertical: 30 }}>
+            You have no recent activities
+          </Text>
         </ScrollView>
       </View>
     );

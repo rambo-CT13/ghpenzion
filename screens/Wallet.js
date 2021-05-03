@@ -85,39 +85,45 @@ export default function Wallet({ navigation }) {
         </View>
         <Text style={styles.recentText}>Recent Activity</Text>
         <View style={styles.section}>
-          {transactions.map((item, index) => {
-            if (item.user == profile.id) {
-              return (
-                <View style={styles.recentCard} key={index}>
-                  <Icon
-                    type="MaterialCommunityIcons "
-                    name={
-                      item.type === "Wallet Top Up"
-                        ? "arrow-bottom-right-bold-outline"
-                        : "arrow-top-left-bold-outline"
-                    }
-                    style={[
-                      styles.topUpIcon,
-                      { color: item.type === "Wallet Top Up" && "#dd4400" },
-                    ]}
-                  />
-                  <View style={styles.recentTitle}>
-                    <Text style={styles.recentTitleText}>{item.type}</Text>
-                    <Text style={{ fontSize: 12 }}>Mobile Payment</Text>
+          {transactions ? (
+            transactions.map((item, index) => {
+              if (item.user == profile.id) {
+                return (
+                  <View style={styles.recentCard} key={index}>
+                    <Icon
+                      type="MaterialCommunityIcons "
+                      name={
+                        item.type === "Wallet Top Up"
+                          ? "arrow-bottom-right-bold-outline"
+                          : "arrow-top-left-bold-outline"
+                      }
+                      style={[
+                        styles.topUpIcon,
+                        { color: item.type === "Wallet Top Up" && "#dd4400" },
+                      ]}
+                    />
+                    <View style={styles.recentTitle}>
+                      <Text style={styles.recentTitleText}>{item.type}</Text>
+                      <Text style={{ fontSize: 12 }}>Mobile Payment</Text>
+                    </View>
+                    <View style={styles.recentAmount}>
+                      <Text style={styles.recentTitleText2}>
+                        {item.type === "Wallet Top Up" ? "+" : "-"}Ghc{" "}
+                        {item.amount}
+                      </Text>
+                      <Text style={{ fontSize: 12, alignSelf: "flex-end" }}>
+                        {item.time.toDate().toDateString()}
+                      </Text>
+                    </View>
                   </View>
-                  <View style={styles.recentAmount}>
-                    <Text style={styles.recentTitleText2}>
-                      {item.type === "Wallet Top Up" ? "+" : "-"}Ghc{" "}
-                      {item.amount}
-                    </Text>
-                    <Text style={{ fontSize: 12, alignSelf: "flex-end" }}>
-                      {item.time.toDate().toDateString()}
-                    </Text>
-                  </View>
-                </View>
-              );
-            }
-          })}
+                );
+              }
+            })
+          ) : (
+            <Text style={{ alignSelf: "center", marginVertical: 30 }}>
+              You have no recent activities
+            </Text>
+          )}
         </View>
       </ScrollView>
     </View>

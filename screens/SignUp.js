@@ -61,17 +61,28 @@ export default function SignUp({ navigation }) {
         >
           <Text style={styles.loginBtn}>Sign Up</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          activeOpacity={0.6}
-          style={{ flex: 1 }}
-          onPress={() => navigation.navigate("Login")}
-        >
-          <Text style={{ alignSelf: "center", marginBottom: -18 }}>
-            Existing Users can Log in
-          </Text>
-          <Text style={styles.createBtn}>Existing User</Text>
-        </TouchableOpacity>
       </KeyboardAwareScrollView>
+      <View
+        style={{
+          position: "absolute",
+          bottom: 20,
+          alignSelf: "center",
+          flexDirection: "row",
+        }}
+      >
+        <Text>Already a member?</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+          <Text
+            style={{
+              color: "#dd4400",
+              marginHorizontal: 5,
+              fontWeight: "bold",
+            }}
+          >
+            Login
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }

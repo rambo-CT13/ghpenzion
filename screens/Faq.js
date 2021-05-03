@@ -37,7 +37,7 @@ export default function Faq() {
             </TouchableOpacity>
           </View>
           <View style={styles.faqView}>
-            <Text style={styles.faqHead}>How to top up your Wallet?</Text>
+            <Text style={styles.faqHead}>How to request Withdrawal?</Text>
             <Text style={styles.faqExcerpt}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -60,7 +60,7 @@ export default function Faq() {
             </TouchableOpacity>
           </View>
           <View style={styles.faqView}>
-            <Text style={styles.faqHead}>How to top up your Wallet?</Text>
+            <Text style={styles.faqHead}>How to Contact Support?</Text>
             <Text style={styles.faqExcerpt}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.

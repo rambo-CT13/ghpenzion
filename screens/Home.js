@@ -2,11 +2,14 @@ import React, { useContext } from "react";
 import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import { styles } from "../components/Styles";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { AuthContext, ProfileContext } from "../services/ContextProvider";
+import {
+  TransactionContext,
+  ProfileContext,
+} from "../services/ContextProvider";
 
 export default function Home() {
-  const user = useContext(AuthContext);
   const profile = useContext(ProfileContext);
+  const transactions = useContext(TransactionContext);
 
   return (
     <View style={styles.container}>
@@ -42,8 +45,8 @@ export default function Home() {
           >
             <View style={styles.sumView}>
               <Text style={styles.greetSub2}>Total Contributions</Text>
-              <Text style={styles.totalPen}>GHc 20,561</Text>
-              <Text style={styles.greetSub2}>as @ 20/2/2021</Text>
+              <Text style={styles.totalPen}>GHc 0.00</Text>
+              <Text style={styles.greetSub2}>as @ 07/05/2021</Text>
             </View>
 
             <View style={styles.walletView}>
@@ -59,40 +62,45 @@ export default function Home() {
         </View>
         <Text style={styles.recentText}>Recent Activity</Text>
         <View style={styles.section}>
-          <View style={styles.recentCard}>
-            <Icon
-              type="MaterialCommunityIcons "
-              name="arrow-bottom-right-bold-outline"
-              style={styles.topUpIcon}
-            />
-            <View style={styles.recentTitle}>
-              <Text style={styles.recentTitleText}>Wallet Top Up</Text>
-              <Text style={{ fontSize: 12 }}>Momo Payment</Text>
-            </View>
-            <View style={styles.recentAmount}>
-              <Text style={styles.recentTitleText2}>+Ghc 100.00</Text>
-              <Text style={{ fontSize: 12, alignSelf: "flex-end" }}>
-                30/2/21
-              </Text>
-            </View>
-          </View>
-          <View style={styles.recentCard}>
-            <Icon
-              type="MaterialCommunityIcons "
-              name="arrow-bottom-right-bold-outline"
-              style={styles.topUpIcon}
-            />
-            <View style={styles.recentTitle}>
-              <Text style={styles.recentTitleText}>Wallet Top Up</Text>
-              <Text style={{ fontSize: 12 }}>Momo Payment</Text>
-            </View>
-            <View style={styles.recentAmount}>
-              <Text style={styles.recentTitleText2}>+Ghc 20.00</Text>
-              <Text style={{ fontSize: 12, alignSelf: "flex-end" }}>
-                3/3/21
-              </Text>
-            </View>
-          </View>
+          {transactions ? (
+            transactions.map((item, index) => {
+              if (item.user == profile.id) {
+                return (
+                  <View style={styles.recentCard} key={index}>
+                    <Icon
+                      type="MaterialCommunityIcons "
+                      name={
+                        item.type === "Wallet Top Up"
+                          ? "arrow-bottom-right-bold-outline"
+                          : "arrow-top-left-bold-outline"
+                      }
+                      style={[
+                        styles.topUpIcon,
+                        { color: item.type === "Wallet Top Up" && "#dd4400" },
+                      ]}
+                    />
+                    <View style={styles.recentTitle}>
+                      <Text style={styles.recentTitleText}>{item.type}</Text>
+                      <Text style={{ fontSize: 12 }}>Mobile Payment</Text>
+                    </View>
+                    <View style={styles.recentAmount}>
+                      <Text style={styles.recentTitleText2}>
+                        {item.type === "Wallet Top Up" ? "+" : "-"}Ghc{" "}
+                        {item.amount}
+                      </Text>
+                      <Text style={{ fontSize: 12, alignSelf: "flex-end" }}>
+                        {item.time.toDate().toDateString()}
+                      </Text>
+                    </View>
+                  </View>
+                );
+              }
+            })
+          ) : (
+            <Text style={{ alignSelf: "center", marginVertical: 30 }}>
+              You have no recent activities
+            </Text>
+          )}
         </View>
       </ScrollView>
     </View>

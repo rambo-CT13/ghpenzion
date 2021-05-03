@@ -99,14 +99,14 @@ export default function Profile() {
           </TouchableOpacity>
         </View>
       </ScrollView>
-      <TouchableOpacity style={styles.abRight}>
+      {/* <TouchableOpacity style={styles.abRight}>
         <Icon
           type="MaterialCommunityIcons "
           name="pencil"
           style={styles.editIcon}
         />
         <Text style={styles.editText}>Update</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 }

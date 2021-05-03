@@ -49,7 +49,7 @@ export default function Login({ navigation }) {
 
   return (
     <View style={[styles.container, { backgroundColor: "#fff" }]}>
-      <KeyboardAwareScrollView>
+      <KeyboardAwareScrollView style={{ flex: 1 }}>
         <RoundShape shapeColor="#fff" />
         <Text style={[styles.loginHead]}>Login</Text>
         <View style={styles.loginForm}>
@@ -85,17 +85,28 @@ export default function Login({ navigation }) {
             <Text style={styles.loginBtn}>Login</Text>
           )}
         </TouchableOpacity>
-        <TouchableOpacity
-          activeOpacity={0.6}
-          style={{ flex: 1 }}
-          onPress={() => navigation.navigate("Register")}
-        >
-          <Text style={{ alignSelf: "center", marginBottom: -18 }}>
-            New Users Create an Account
-          </Text>
-          <Text style={styles.createBtn}>Create an Account</Text>
-        </TouchableOpacity>
       </KeyboardAwareScrollView>
+      <View
+        style={{
+          position: "absolute",
+          bottom: 20,
+          alignSelf: "center",
+          flexDirection: "row",
+        }}
+      >
+        <Text>Not a member?</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+          <Text
+            style={{
+              color: "#dd4400",
+              marginHorizontal: 5,
+              fontWeight: "bold",
+            }}
+          >
+            Register Now
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
