@@ -61,28 +61,27 @@ export default function SignUp({ navigation }) {
         >
           <Text style={styles.loginBtn}>Sign Up</Text>
         </TouchableOpacity>
+        <View
+          style={{
+            marginBottom: 20,
+            alignSelf: "center",
+            flexDirection: "row",
+          }}
+        >
+          <Text>Already a member?</Text>
+          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+            <Text
+              style={{
+                color: "#dd4400",
+                marginHorizontal: 5,
+                fontWeight: "bold",
+              }}
+            >
+              Login
+            </Text>
+          </TouchableOpacity>
+        </View>
       </KeyboardAwareScrollView>
-      <View
-        style={{
-          position: "absolute",
-          bottom: 20,
-          alignSelf: "center",
-          flexDirection: "row",
-        }}
-      >
-        <Text>Already a member?</Text>
-        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-          <Text
-            style={{
-              color: "#dd4400",
-              marginHorizontal: 5,
-              fontWeight: "bold",
-            }}
-          >
-            Login
-          </Text>
-        </TouchableOpacity>
-      </View>
     </View>
   );
 }
